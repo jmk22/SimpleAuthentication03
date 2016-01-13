@@ -1,0 +1,25 @@
+﻿@model SimpleAuthentication03.Models.ToDo
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h2>Edit this task</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(Model => Model.Id)
+        @Html.LabelFor(model => model.Description)
+        @Html.EditorFor(model => model.Description)
+
+        @Html.HiddenFor(Model => Model.User.Id)
+
+        <input type="submit" value="Save" />
+
+    }
+
+    @Html.ActionLink("Back to List", "Index")
+
+</body>
+</html>

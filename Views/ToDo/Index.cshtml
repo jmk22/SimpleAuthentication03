@@ -1,0 +1,28 @@
+﻿@using System.Security.Claims
+
+@model IEnumerable<SimpleAuthentication03.Models.ToDo>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h2>Here is your list of tasks, @User.GetUserName()</h2>
+    <hr />
+    @if (!Model.Any())
+    {
+        <p>No tasks have been added yet!</p>
+
+    }
+    else
+    {
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@Html.DisplayFor(modelItem => item.Description) | @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
+            }
+        </ul>
+    }
+    @Html.ActionLink("Create new", "Create")
+</body>
+</html>
